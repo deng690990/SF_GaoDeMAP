@@ -1,0 +1,1 @@
+../../../../AMapNavi/AMapNaviKit.framework/Headers/AMapNaviBaseManager.h
