@@ -3,28 +3,28 @@
 
 废话不多说，直奔主题。
 
-###一、准备工作
+>一、准备工作
 我们要做高德地图相关的应用，首先得注册一个高德账号（一般以公司名义注册，如果是个人项目，就注册个人账号）。进入[高德开放平台注册](http://lbs.amap.com/dev/id/newuser)。当然有高德账号的同仁请忽略这一步。当你注册并登陆成功后我们就可以正式进入高德开发之旅了。
 
-####1、进入控制台
+>1、进入控制台
 ![QQ20170708-101558.png](http://upload-images.jianshu.io/upload_images/5351221-cca8bfa3a3686232.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####2、创建应用
+>2、创建应用
 
 ![QQ20170708-102327.png](http://upload-images.jianshu.io/upload_images/5351221-5d3c4bedfb7e7c7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![QQ20170708-102643.png](http://upload-images.jianshu.io/upload_images/5351221-050d2a748f6e8b9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####3、添加key
+>3、添加key
 		
 ![QQ20170708-102824.png](http://upload-images.jianshu.io/upload_images/5351221-475fceedc600273c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ![QQ20170708-103058.png](http://upload-images.jianshu.io/upload_images/5351221-27287683e1b7ae34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####Bundle ID
+>Bundle ID
 ![QQ20170708-103222.png](http://upload-images.jianshu.io/upload_images/5351221-05cfe78070822ba0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####4、利用pod导入高德的相关sdk
+>4、利用pod导入高德的相关sdk
 ```objective-c
 //相信pod大家都用过，我就不具体介绍如何安装和使用cocoaPods了
 pod 'AFNetworking'
@@ -37,7 +37,7 @@ pod 'JZLocationConverter'#gps纠偏
 
 >假如不懂cocoapods使用的，看这篇文章[http://blog.csdn.net/e62ces0iem/article/details/73550884](http://blog.csdn.net/e62ces0iem/article/details/73550884)
 
-####5、将高德生成的key放到APPdelegate.h文件中
+>5、将高德生成的key放到APPdelegate.h文件中
 
 ![QQ20170708-104047.png](http://upload-images.jianshu.io/upload_images/5351221-4275552b36c2cdcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -50,7 +50,7 @@ pod 'JZLocationConverter'#gps纠偏
 #define APIKEY @"a80ff3043934c4cb4a3af35b6b20b32"
 ```
 
-####6、在APPdelegate.m文件里设置相关内容
+>6、在APPdelegate.m文件里设置相关内容
 ```objective-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //设置APIKEY
@@ -60,13 +60,13 @@ pod 'JZLocationConverter'#gps纠偏
 }
 ```
 
-####7、在plist文件中开启定位服务
+>7、在plist文件中开启定位服务
 
 ![QQ20170708-144008.png](http://upload-images.jianshu.io/upload_images/5351221-6b7e00b88a9641d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-###二、实现地图相关功能
+>二、实现地图相关功能
 
-####1、将我封装好的包导入项目中
+>1、将我封装好的包导入项目中
 
 ![QQ20170708-135921.png](http://upload-images.jianshu.io/upload_images/5351221-ad1923cf5eef225d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
