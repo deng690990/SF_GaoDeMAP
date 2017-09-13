@@ -10,6 +10,9 @@
 #import "SpeechSynthesizer.h"
 #import "MoreMenuView.h"
 
+
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
 @interface MapManager()<MAMapViewDelegate,AMapSearchDelegate,AMapNaviWalkManagerDelegate,AMapNaviWalkViewDelegate,AMapNaviDriveViewDelegate,AMapNaviDriveManagerDelegate,MoreMenuViewDelegate>
 @property (nonatomic,strong)NSMutableArray *searchResultArr;
 @property (nonatomic, strong) MoreMenuView *moreMenu;//导航页面菜单选项
@@ -32,6 +35,24 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 -(void)initMapView{
     [self initSearch];
     ///初始化地图
+    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_W      , SCREEN_H-64)];
+    ///把地图添加至view
+    [self.controller.view addSubview:_mapView];
+    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    //设置地图缩放比例，即显示区域
+    [_mapView setZoomLevel:15.1 animated:YES];
+    _mapView.delegate = self;
+    //设置定位精度
+    _mapView.desiredAccuracy = kCLLocationAccuracyBest;
+    //设置定位距离
+    _mapView.distanceFilter = 5.0f;
+}
+#pragma mark --带block的地图初始化方法
+-(void)initMapViewWithBlock:(MapBlock)block{
+    [self initSearch];
+    ///初始化地图
     _mapView = [[MAMapView alloc] initWithFrame:self.controller.view.bounds];
     ///把地图添加至view
     [self.controller.view addSubview:_mapView];
@@ -45,6 +66,9 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
     _mapView.desiredAccuracy = kCLLocationAccuracyBest;
     //设置定位距离
     _mapView.distanceFilter = 5.0f;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        block();
+    });
 }
 #pragma mark --初始化导航管理类对象
 - (void)initWalkManager
@@ -70,9 +94,10 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
     AMapReGeocodeSearchRequest *request =[[AMapReGeocodeSearchRequest alloc] init];
     request.location =[AMapGeoPoint locationWithLatitude:coor.latitude longitude:coor.longitude];
     [_search AMapReGoecodeSearch:request];
-    self.anomationPoint.coordinate = coor;
-    [self.mapView addAnnotation:self.anomationPoint];
-    //将车的位置放在地图的中心
+    _anomationPoint = [[MAPointAnnotation alloc]init];
+    _anomationPoint.coordinate = coor;
+    [self.mapView addAnnotation:_anomationPoint];
+    //将标记点的位置放在地图的中心
     _mapView.centerCoordinate = coor;
 }
 #pragma mark --设置大头针上方气泡的内容的代理方法
@@ -114,7 +139,9 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
     }
     return nil;
 }
+#pragma mark --导航点击事件
 -(void)navBtnClick{
+    self.controller.navigationController.navigationBar.hidden = YES;
     NSLog(@"%lf---%lf",distinateCoor.latitude,distinateCoor.longitude);
     //初始化起点和终点
     self.startPoint = [AMapNaviPoint locationWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
@@ -130,7 +157,6 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 
 #pragma mark serach初始化
 -(void)initSearch{
-    
     _search =[[AMapSearchAPI alloc] init];
     _search.delegate=self;
 }
@@ -171,8 +197,8 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
         _mapView.userLocation.title = title;
         _mapView.userLocation.subtitle = response.regeocode.formattedAddress;
     }else{
-        _destinatePoint.title = title;
-        _destinatePoint.subtitle = response.regeocode.formattedAddress;
+        self.anomationPoint.title = title;
+        self.anomationPoint.subtitle = response.regeocode.formattedAddress;
     }
 }
 #pragma mark 定位更新回调
@@ -188,11 +214,9 @@ updatingLocation:(BOOL)updatingLocation
     
 }
 -(void)setCurrentLocation:(CLLocation *)currentLocation{
-    if (!_currentLocation) {
         _currentLocation = currentLocation;
-        _mapView.centerCoordinate = self.currentLocation.coordinate;
+        _mapView.centerCoordinate = currentLocation.coordinate;
         [self reGeoCoding];
-    }
 }
 #pragma mark 逆地理编码,经纬度编码成地址
 -(void)reGeoCoding{
@@ -213,13 +237,6 @@ updatingLocation:(BOOL)updatingLocation
     AMapGeoPoint *point = response.geocodes[0].location;
     NSLog(@"----%lf====%lf",point.latitude,point.latitude);
 }
-#pragma mark --懒加载
--(MAPointAnnotation *)destinatePoint{
-    if (!_destinatePoint) {
-        _destinatePoint = [[MAPointAnnotation alloc]init];
-    }
-    return _destinatePoint;
-}
 #pragma mark --选中某个大头针后回调的方法
 -(void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view{
     //    NSLog(@"%lf------%lf",view.annotation.coordinate.latitude,view.annotation.coordinate.longitude);
@@ -231,6 +248,7 @@ updatingLocation:(BOOL)updatingLocation
 }
 #pragma mark --关闭导航的方法
 -(void)walkViewCloseButtonClicked:(AMapNaviWalkView *)walkView{
+    self.controller.navigationController.navigationBar.hidden = NO;
     [self.walkManager stopNavi];
     [walkView removeFromSuperview];
     //停止语音
@@ -244,6 +262,7 @@ updatingLocation:(BOOL)updatingLocation
     [driveManager startGPSNavi];
 }
 -(void)driveViewCloseButtonClicked:(AMapNaviDriveView *)driveView{
+    self.controller.navigationController.navigationBar.hidden = NO;
     [self.driveManager stopNavi];
     [driveView removeFromSuperview];
     //停止语音
@@ -337,13 +356,14 @@ updatingLocation:(BOOL)updatingLocation
 }
 #pragma mark --标记转折点的位置(轨迹回放)
 -(void)addAnomationWithArray:(NSArray *)array{
-    for (NSString *location in array) {
+    for (int i = 0; i < array.count; i++) {
         CLLocationCoordinate2D coor;
-        coor.latitude = [location substringToIndex:9].floatValue;
-        coor.longitude = [location substringFromIndex:10].floatValue;
-        MAPointAnnotation *stopPoint = [[MAPointAnnotation alloc]init];
-        stopPoint.coordinate = coor;
-        [self.mapView addAnnotation:stopPoint];
+        coor.latitude = [array[i] substringToIndex:9].floatValue;
+        coor.longitude = [array[i] substringFromIndex:10].floatValue;
+        MAPointAnnotation *coorPoint = [[MAPointAnnotation alloc]init];
+        coorPoint.coordinate = coor;
+        coorPoint.title = [NSString stringWithFormat:@"位置%d",i+1];
+        [self.mapView addAnnotation:coorPoint];
     }
 }
 #pragma mark --设置折线代理方法

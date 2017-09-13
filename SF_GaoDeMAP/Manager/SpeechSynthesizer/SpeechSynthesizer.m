@@ -72,12 +72,13 @@
         {
             aUtterance.rate = 0.15;//iOS8设置为0.15
         }
-        
+        else{
+            aUtterance.rate = 0.53;//iOS9设置为0.53
+        }
         if ([self.speechSynthesizer isSpeaking])
         {
             [self.speechSynthesizer stopSpeakingAtBoundary:AVSpeechBoundaryWord];
         }
-        
         [self.speechSynthesizer speakUtterance:aUtterance];
     }
 }

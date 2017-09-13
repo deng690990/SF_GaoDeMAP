@@ -7,10 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "MapViewController.h"
+#import "PointMakeController.h"
+#import "SearchViewController.h"
 #import "MapManager.h"
 #import "TrackViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -18,44 +21,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //不管进行什么地图操作都要先定位自己位置
-    [self locationOnlySelf];
+    
+    [self setupUI];
+}
+-(void)setupUI{
+    UITableView *tableView = [[UITableView alloc]initWithFrame:self.view.bounds];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.rowHeight = 70;
+    [self.view addSubview:tableView];
     
 }
-//显示自己的定位信息
--(void)locationOnlySelf{
-    MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
-    [manager initMapView];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"定位当前位置";
+    }else if (indexPath.row == 1){
+        cell.textLabel.text = @"标记地图上某点";
+    }else if (indexPath.row == 2){
+        cell.textLabel.text = @"附近搜索";
+    }else if (indexPath.row == 3){
+        cell.textLabel.text = @"绘制轨迹";
+    }
+    return cell;
 }
-//给一个坐标，在地图上显示大头针
--(void)addAnonation{
-    CLLocationCoordinate2D coor;
-    coor.latitude = 30.566666;
-    coor.longitude = 104.054536;
-    [[MapManager sharedManager] addAnomationWithCoor:coor];
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 4;
 }
-//附近搜索
--(void)searchAround{
-    //设置了图片就用设置的图片，没有设置图片就用默认图片
-//    [MapManager sharedManager].destinationImgName = @"首牛";
-//    [MapManager sharedManager].locationPointImgName = @"首牛";
-    [[MapManager sharedManager] searchAroundWithKeyWords:@"景点"];
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        MapViewController *MapVc = [[MapViewController alloc]init];
+        [self.navigationController pushViewController:MapVc animated:YES];
+    }else if(indexPath.row == 1){
+        PointMakeController *pointVc = [[PointMakeController alloc]init];
+        [self.navigationController pushViewController:pointVc animated:YES];
+    }else if(indexPath.row == 2){
+        SearchViewController *searchVc = [[SearchViewController alloc]init];
+        [self.navigationController pushViewController:searchVc animated:YES];
+    }else if(indexPath.row == 3){
+        TrackViewController *VC = [[TrackViewController alloc]init];
+        [self.navigationController pushViewController:VC animated:YES];
+    }
 }
-//轨迹回放
--(void)trackLook{
-    TrackViewController *VC = [[TrackViewController alloc]init];
-    [self presentViewController:VC animated:YES completion:nil];
-}
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [self trackLook];
-    //搜索附近
-    [self searchAround];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    
-}
-
-
 @end

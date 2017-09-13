@@ -17,6 +17,8 @@
 #import <AMapNaviKit/AMapNaviKit.h>
 //gps纠偏类
 #import <JZLocationConverter.h>
+
+typedef void(^MapBlock)();
 @interface MapManager : NSObject
 @property (nonatomic,strong)UIViewController *controller;
 //地图对象
@@ -25,8 +27,6 @@
 @property(nonatomic,strong)AMapSearchAPI *search;
 //当前定位
 @property(nonatomic,strong)CLLocation *currentLocation;
-//目的地的大头针
-@property (nonatomic,strong)MAPointAnnotation *destinatePoint;
 //单独大头针
 @property (nonatomic,strong)MAPointAnnotation *anomationPoint;
 //步行导航视图
@@ -49,6 +49,10 @@
 +(instancetype)sharedManager;
 //初始化地图
 -(void)initMapView;
+//初始化搜索对象
+-(void)initSearch;
+//带回调的地图初始化方法
+-(void)initMapViewWithBlock:(MapBlock)block;
 //根据关键字搜索附近
 -(void)searchAroundWithKeyWords:(NSString *)keywords;
 //添加一个大头针

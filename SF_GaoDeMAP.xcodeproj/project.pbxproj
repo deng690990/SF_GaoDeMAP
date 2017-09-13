@@ -14,6 +14,9 @@
 		056452B31EEAAD2A00CCD07E /* map_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452B21EEAAD2A00CCD07E /* map_history.png */; };
 		056452B51EEAADB500CCD07E /* 定位.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452B41EEAADB500CCD07E /* 定位.png */; };
 		056452B81EEAAE0B00CCD07E /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056452B71EEAAE0B00CCD07E /* TrackViewController.m */; };
+		056E30431F67B23F00CFEF27 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30421F67B23F00CFEF27 /* MapViewController.m */; };
+		056E30461F67DC9D00CFEF27 /* PointMakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30451F67DC9D00CFEF27 /* PointMakeController.m */; };
+		056E30491F67DCCD00CFEF27 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30481F67DCCD00CFEF27 /* SearchViewController.m */; };
 		057D04FE1EE68DC30042A0A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D04FD1EE68DC30042A0A6 /* main.m */; };
 		057D05011EE68DC30042A0A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05001EE68DC30042A0A6 /* AppDelegate.m */; };
 		057D05041EE68DC30042A0A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05031EE68DC30042A0A6 /* ViewController.m */; };
@@ -35,6 +38,12 @@
 		056452B41EEAADB500CCD07E /* 定位.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位.png"; sourceTree = "<group>"; };
 		056452B61EEAAE0B00CCD07E /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
 		056452B71EEAAE0B00CCD07E /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
+		056E30411F67B23F00CFEF27 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		056E30421F67B23F00CFEF27 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		056E30441F67DC9D00CFEF27 /* PointMakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointMakeController.h; sourceTree = "<group>"; };
+		056E30451F67DC9D00CFEF27 /* PointMakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointMakeController.m; sourceTree = "<group>"; };
+		056E30471F67DCCD00CFEF27 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		056E30481F67DCCD00CFEF27 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		057D04F91EE68DC30042A0A6 /* SF_GaoDeMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SF_GaoDeMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D04FD1EE68DC30042A0A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		057D04FF1EE68DC30042A0A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,7 +81,36 @@
 				0543FABB1F03588400220A9C /* MoreMenuView.h */,
 				0543FABC1F03588400220A9C /* MoreMenuView.m */,
 			);
-			path = MoreMenuView;
+			name = MoreMenuView;
+			path = Manager/MoreMenuView;
+			sourceTree = "<group>";
+		};
+		056E30401F67B06400CFEF27 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				056452AA1EEA771200CCD07E /* icon.png */,
+				056452B41EEAADB500CCD07E /* 定位.png */,
+				056452AD1EEA8B4E00CCD07E /* 目的地.png */,
+				056452B01EEA9B2100CCD07E /* 首牛.png */,
+				056452B21EEAAD2A00CCD07E /* map_history.png */,
+			);
+			name = Images;
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		056E304A1F67DCD700CFEF27 /* SubVC */ = {
+			isa = PBXGroup;
+			children = (
+				056E30411F67B23F00CFEF27 /* MapViewController.h */,
+				056E30421F67B23F00CFEF27 /* MapViewController.m */,
+				056E30441F67DC9D00CFEF27 /* PointMakeController.h */,
+				056E30451F67DC9D00CFEF27 /* PointMakeController.m */,
+				056E30471F67DCCD00CFEF27 /* SearchViewController.h */,
+				056E30481F67DCCD00CFEF27 /* SearchViewController.m */,
+				056452B61EEAAE0B00CCD07E /* TrackViewController.h */,
+				056452B71EEAAE0B00CCD07E /* TrackViewController.m */,
+			);
+			name = SubVC;
 			sourceTree = "<group>";
 		};
 		057D04F01EE68DC30042A0A6 = {
@@ -96,13 +134,15 @@
 		057D04FB1EE68DC30042A0A6 /* SF_GaoDeMAP */ = {
 			isa = PBXGroup;
 			children = (
+				056E30401F67B06400CFEF27 /* Images */,
+				0543FABA1F03588400220A9C /* MoreMenuView */,
+				05DAA9BE1F035370008586AE /* SpeechSynthesizer */,
 				057D05131EE68F2F0042A0A6 /* Manager */,
+				056E304A1F67DCD700CFEF27 /* SubVC */,
 				057D04FF1EE68DC30042A0A6 /* AppDelegate.h */,
 				057D05001EE68DC30042A0A6 /* AppDelegate.m */,
 				057D05021EE68DC30042A0A6 /* ViewController.h */,
 				057D05031EE68DC30042A0A6 /* ViewController.m */,
-				056452B61EEAAE0B00CCD07E /* TrackViewController.h */,
-				056452B71EEAAE0B00CCD07E /* TrackViewController.m */,
 				057D05051EE68DC30042A0A6 /* Main.storyboard */,
 				057D05081EE68DC30042A0A6 /* Assets.xcassets */,
 				057D050A1EE68DC30042A0A6 /* LaunchScreen.storyboard */,
@@ -123,13 +163,6 @@
 		057D05131EE68F2F0042A0A6 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				0543FABA1F03588400220A9C /* MoreMenuView */,
-				05DAA9BE1F035370008586AE /* SpeechSynthesizer */,
-				056452AA1EEA771200CCD07E /* icon.png */,
-				056452B41EEAADB500CCD07E /* 定位.png */,
-				056452AD1EEA8B4E00CCD07E /* 目的地.png */,
-				056452B01EEA9B2100CCD07E /* 首牛.png */,
-				056452B21EEAAD2A00CCD07E /* map_history.png */,
 				057D05141EE68F660042A0A6 /* MapManager.h */,
 				057D05151EE68F660042A0A6 /* MapManager.m */,
 			);
@@ -142,7 +175,8 @@
 				05DAA9BF1F035370008586AE /* SpeechSynthesizer.h */,
 				05DAA9C01F035370008586AE /* SpeechSynthesizer.m */,
 			);
-			path = SpeechSynthesizer;
+			name = SpeechSynthesizer;
+			path = Manager/SpeechSynthesizer;
 			sourceTree = "<group>";
 		};
 		37DD374D67F523A68432ADBA /* Frameworks */ = {
@@ -292,8 +326,11 @@
 			files = (
 				056452B81EEAAE0B00CCD07E /* TrackViewController.m in Sources */,
 				057D05161EE68F660042A0A6 /* MapManager.m in Sources */,
+				056E30491F67DCCD00CFEF27 /* SearchViewController.m in Sources */,
 				057D05041EE68DC30042A0A6 /* ViewController.m in Sources */,
+				056E30431F67B23F00CFEF27 /* MapViewController.m in Sources */,
 				0543FABD1F03588400220A9C /* MoreMenuView.m in Sources */,
+				056E30461F67DC9D00CFEF27 /* PointMakeController.m in Sources */,
 				057D05011EE68DC30042A0A6 /* AppDelegate.m in Sources */,
 				05DAA9C11F035370008586AE /* SpeechSynthesizer.m in Sources */,
 				057D04FE1EE68DC30042A0A6 /* main.m in Sources */,

@@ -15,6 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"轨迹绘制";
     MapManager *manager = [MapManager sharedManager];
     manager.controller = self;
     [manager initMapView];
