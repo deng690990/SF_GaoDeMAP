@@ -62,7 +62,7 @@ pod 'JZLocationConverter'#gps纠偏
 
 #### 7、在plist文件中开启定位服务
 
-![QQ20170708-144008.png](http://upload-images.jianshu.io/upload_images/5351221-6b7e00b88a9641d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![QQ20171219-180121.png](http://upload-images.jianshu.io/upload_images/5351221-1f0e4e13c5d2866a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 二、实现地图相关功能
 
