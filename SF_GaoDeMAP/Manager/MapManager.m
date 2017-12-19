@@ -48,6 +48,8 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
     _mapView.desiredAccuracy = kCLLocationAccuracyBest;
     //设置定位距离
     _mapView.distanceFilter = 5.0f;
+    //把中心点设成自己的坐标
+    _mapView.centerCoordinate = self.currentLocation.coordinate;
 }
 #pragma mark --带block的地图初始化方法
 -(void)initMapViewWithBlock:(MapBlock)block{
@@ -207,16 +209,18 @@ updatingLocation:(BOOL)updatingLocation
 {
     if(updatingLocation)
     {
-        //        取出当前位置的坐标
-//        NSLog(@"latitude : %f,longitude: %f",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
+        self.currentLocation = [userLocation.location copy];
     }
-    self.currentLocation = [userLocation.location copy];
+    
     
 }
 -(void)setCurrentLocation:(CLLocation *)currentLocation{
+    
+    if (!_currentLocation) {
         _currentLocation = currentLocation;
         _mapView.centerCoordinate = currentLocation.coordinate;
         [self reGeoCoding];
+    }
 }
 #pragma mark 逆地理编码,经纬度编码成地址
 -(void)reGeoCoding{
@@ -400,6 +404,8 @@ updatingLocation:(BOOL)updatingLocation
         point.title = poi.name;
         [self.mapView addAnnotation:point];
     }
+    //把中心点设成自己的坐标
+    self.mapView.centerCoordinate = self.currentLocation.coordinate;
 }
 #pragma mark - MoreMenu Delegate
 
