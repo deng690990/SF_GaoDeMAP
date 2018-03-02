@@ -105,7 +105,9 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 #pragma mark --设置大头针上方气泡的内容的代理方法
 -(MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
     //大头针标注
-    if ([annotation isKindOfClass:[MAPointAnnotation class]]) {//判断是否是自己的定位气泡，如果是自己的定位气泡，不做任何设置，显示为蓝点，如果不是自己的定位气泡，比如大头针就会进入
+    if ([annotation isKindOfClass:[MAUserLocation class]]) {
+        return nil;
+    }else{
         static NSString *pointReuseIndentifier = @"pointReuseIndentifier";
         MAAnnotationView*annotationView = (MAAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:pointReuseIndentifier];
         if (annotationView == nil) {
@@ -139,7 +141,6 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
         annotationView.rightCalloutAccessoryView = rightButton;
         return annotationView;
     }
-    return nil;
 }
 #pragma mark --导航点击事件
 -(void)navBtnClick{
