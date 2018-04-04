@@ -169,7 +169,6 @@ pod 'JZLocationConverter'#gps纠偏
 
 ### 四、demo下载地址及效果图
 
-### 百度云盘下载地址[链接: https://pan.baidu.com/s/1gfkVmeR 密码: sk9w](https://pan.baidu.com/s/1gfkVmeR)
 
 ![高德demo.gif](http://upload-images.jianshu.io/upload_images/5351221-c921713cb07b05f7.gif?imageMogr2/auto-orient/strip)
 
