@@ -20,7 +20,7 @@
 
 typedef void(^MapBlock)();
 @interface MapManager : NSObject
-@property (nonatomic,strong)UIViewController *controller;
+@property (nonatomic,weak)UIViewController *controller;
 //地图对象
 @property(nonatomic,strong)MAMapView *mapView;
 //一个search对象，用于地理位置逆编码
