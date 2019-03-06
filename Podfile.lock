@@ -28,11 +28,21 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - AMap3DMap (~> 4.4.1)
+  - AMap3DMap
   - AMapLocation
   - AMapNavi
   - AMapSearch
   - JZLocationConverter
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - AMap3DMap
+    - AMapFoundation
+    - AMapLocation
+    - AMapNavi
+    - AMapSearch
+    - JZLocationConverter
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -43,6 +53,6 @@ SPEC CHECKSUMS:
   AMapSearch: d4c924b929f433968669721a07b4bd57736f5f2a
   JZLocationConverter: 3d816bee6484aed9c155a6045a02ce444833e2f0
 
-PODFILE CHECKSUM: 4d117a285c62b008b921f24a8cfe59bc995b1f4e
+PODFILE CHECKSUM: f12f436e7997bc8389547332c4c1b7e074c01727
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

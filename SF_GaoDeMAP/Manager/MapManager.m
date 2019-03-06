@@ -13,7 +13,7 @@
 
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
-@interface MapManager()<MAMapViewDelegate,AMapSearchDelegate,AMapNaviWalkManagerDelegate,AMapNaviWalkViewDelegate,AMapNaviDriveViewDelegate,AMapNaviDriveManagerDelegate,MoreMenuViewDelegate>
+@interface MapManager()<MAMapViewDelegate,AMapSearchDelegate,AMapNaviWalkManagerDelegate,AMapNaviWalkViewDelegate,AMapNaviDriveViewDelegate,AMapNaviDriveManagerDelegate,MoreMenuViewDelegate,AMapGeoFenceManagerDelegate>
 @property (nonatomic,strong)NSMutableArray *searchResultArr;
 @property (nonatomic, strong) MoreMenuView *moreMenu;//导航页面菜单选项
 @end
@@ -221,6 +221,10 @@ updatingLocation:(BOOL)updatingLocation
         _currentLocation = currentLocation;
         _mapView.centerCoordinate = currentLocation.coordinate;
         [self reGeoCoding];
+        if (self.geoBlock) {
+            _mapView.centerCoordinate = self.config.centerCoordinate;
+            self.geoBlock();
+        }
     }
 }
 #pragma mark 逆地理编码,经纬度编码成地址
@@ -371,9 +375,10 @@ updatingLocation:(BOOL)updatingLocation
         [self.mapView addAnnotation:coorPoint];
     }
 }
-#pragma mark --设置折线代理方法
+#pragma mark --设置图层代理方法
 - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id <MAOverlay>)overlay
 {
+    //图层为折线
     if ([overlay isKindOfClass:[MAPolyline class]])
     {
         MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:overlay];
@@ -388,7 +393,23 @@ updatingLocation:(BOOL)updatingLocation
         
         return polylineRenderer;
     }
-    
+    //图层为圆形
+    if ([overlay isKindOfClass:[MACircle class]]) {
+        MACircleRenderer * polygonRenderer = [[MACircleRenderer alloc]initWithCircle:overlay];
+        polygonRenderer.lineWidth   = self.config.geoLineW;
+         polygonRenderer.strokeColor = self.config.geoColor;
+        polygonRenderer.fillColor = [UIColor colorWithRed:0.73 green:0.73 blue:0.73 alpha:0.2];
+        return polygonRenderer;
+    }
+    // 多边形地理围栏
+    if ([overlay isKindOfClass:[MAPolygon class]]) {
+        MAPolygonRenderer *polylineRenderer = [[MAPolygonRenderer alloc] initWithPolygon:(MAPolygon *)overlay];
+        polylineRenderer.lineWidth = self.config.geoLineW;
+        polylineRenderer.strokeColor = self.config.geoColor;
+        //内部填充色
+        polylineRenderer.fillColor = [UIColor   colorWithRed:113/255.0 green:174/255.0 blue:247/255.0 alpha:0.3];
+        return polylineRenderer;
+    }
     return nil;
 }
 
@@ -424,5 +445,82 @@ updatingLocation:(BOOL)updatingLocation
 {
     [self.driveView setTrackingMode:trackingMode];
 }
+#pragma mark --围栏地图初始化方法
+-(void)initMapViewWithGeofraphyBlock:(MapBlock)block{
+    [self initSearch];
+    ///初始化地图
+    _mapView = [[MAMapView alloc] initWithFrame:self.controller.view.bounds];
+    ///把地图添加至view
+    [self.controller.view addSubview:_mapView];
+    ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
+    _mapView.showsUserLocation = YES;
+    _mapView.userTrackingMode = MAUserTrackingModeFollow;
+    //设置地图缩放比例，即显示区域
+    [_mapView setZoomLevel:15.1 animated:YES];
+    _mapView.delegate = self;
+    //设置定位精度
+    _mapView.desiredAccuracy = kCLLocationAccuracyBest;
+    //设置定位距离
+    _mapView.distanceFilter = 5.0f;
+    self.geoBlock = block;
+}
+#pragma mark --地理围栏部分
+-(AMapGeoFenceManager *)geoFenceManager{
+    if (!_geoFenceManager) {
+        _geoFenceManager = [[AMapGeoFenceManager alloc] init];
+        _geoFenceManager.delegate = self;
+        //设置希望侦测的围栏触发行为，默认是侦测用户进入围栏的行为，即AMapGeoFenceActiveActionInside |AMapGeoFenceActiveActionOutside | AMapGeoFenceActiveActionStayed，这边设置为进入，离开，停留（在围栏内10分钟以上），都触发回调
+        _geoFenceManager.activeAction = AMapGeoFenceActiveActionInside;
+        _geoFenceManager.allowsBackgroundLocationUpdates = YES;  //允许后台定位
+    }
+    return _geoFenceManager;
+}
 
+/**
+ 创建围栏的方法
+ */
+-(void)creadGeofenceWithGeoId:(NSString *)customID{
+    if (_config.geoType == GeoType_circle) {
+        [self.geoFenceManager addCircleRegionForMonitoringWithCenter:self.config.centerCoordinate radius:self.config.reduis customID:customID];
+    }else if (_config.geoType == GeoType_polygon){
+        [self.geoFenceManager addPolygonRegionForMonitoringWithCoordinates:self.config.coordinates count:self.config.coordinateCount customID:customID];
+    }
+}
+//围栏代理方法
+- (void)amapGeoFenceManager:(AMapGeoFenceManager *)manager didAddRegionForMonitoringFinished:(NSArray<AMapGeoFenceRegion *> *)regions customID:(NSString *)customID error:(NSError *)error {
+    if (error) {
+        NSLog(@"围栏创建失败 %@",error);
+    } else {
+        NSLog(@"围栏创建成功");
+        //围栏创建成功画边界
+        if (self.config.geoType == GeoType_circle) {
+            //圆形
+            MACircle *circle = [self showCircleInMap:self.config.centerCoordinate radius:self.config.reduis];
+            [self.mapView setVisibleMapRect:circle.boundingMapRect edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:NO];
+        }else if(self.config.geoType == GeoType_polygon){
+            AMapGeoFencePolygonRegion *polygonRegion = (AMapGeoFencePolygonRegion *)regions.firstObject;
+            MAPolygon *polygonOverlay = [self showPolygonInMap:polygonRegion.coordinates count:polygonRegion.count];
+            [self.mapView setVisibleMapRect:polygonOverlay.boundingMapRect edgePadding:UIEdgeInsetsMake(20, 20, 20, 20) animated:NO];
+        }
+    }
+}
+//地图上显示圆
+- (MACircle *)showCircleInMap:(CLLocationCoordinate2D )coordinate radius:(NSInteger)radius {
+    MACircle *circleOverlay = [MACircle circleWithCenterCoordinate:coordinate radius:radius];
+    [self.mapView addOverlay:circleOverlay];
+    return circleOverlay;
+}
+#pragma mark 地图上显示多边形
+- (MAPolygon *)showPolygonInMap:(CLLocationCoordinate2D *)coordinates count:(NSInteger)count {
+    MAPolygon *polygonOverlay = [MAPolygon polygonWithCoordinates:coordinates count:count];
+    [self.mapView addOverlay:polygonOverlay];
+    return polygonOverlay;
+}
+- (void)amapGeoFenceManager:(AMapGeoFenceManager *)manager didGeoFencesStatusChangedForRegion:(AMapGeoFenceRegion *)region customID:(NSString *)customID error:(NSError *)error {
+    if (error) {
+        NSLog(@"围栏状态变化错误 %@",error);
+    }else{
+        NSLog(@"用户超出了围栏范围 %@",[region description]);
+    }
+}
 @end

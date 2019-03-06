@@ -17,6 +17,9 @@
 #import <AMapNaviKit/AMapNaviKit.h>
 //gps纠偏类
 #import <JZLocationConverter.h>
+//地理围栏用
+#import <AMapLocationKit/AMapLocationKit.h>
+#import "GeographyConfigModel.h"
 
 typedef void(^MapBlock)();
 @interface MapManager : NSObject
@@ -41,6 +44,12 @@ typedef void(^MapBlock)();
 @property (nonatomic,strong)AMapNaviDriveView *driveView;
 //驾车导航管理员
 @property (nonatomic,strong)AMapNaviDriveManager *driveManager;
+//地理围栏管理对象
+@property (nonatomic,strong) AMapGeoFenceManager *geoFenceManager;
+//围栏需要用到的block
+@property (nonatomic,strong) MapBlock geoBlock;
+//围栏配置对象
+@property (nonatomic,strong) GeographyConfigModel *config;
 //目的地图片名
 @property (nonatomic,strong)NSString *destinationImgName;
 //定位大头针图片名
@@ -61,4 +70,8 @@ typedef void(^MapBlock)();
 -(void)drawLineWithArray:(NSArray *)array;
 //轨迹回放点
 -(void)addAnomationWithArray:(NSArray *)array;
+//带围栏的地图初始化方法
+-(void)initMapViewWithGeofraphyBlock:(MapBlock)block;
+//创建地理围栏
+-(void)creadGeofenceWithGeoId:(NSString *)customID;
 @end

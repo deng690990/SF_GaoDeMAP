@@ -25,6 +25,8 @@
 		057D050C1EE68DC30042A0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D050A1EE68DC30042A0A6 /* LaunchScreen.storyboard */; };
 		057D05161EE68F660042A0A6 /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05151EE68F660042A0A6 /* MapManager.m */; };
 		05DAA9C11F035370008586AE /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DAA9C01F035370008586AE /* SpeechSynthesizer.m */; };
+		DF39034822266FEE00C9F49C /* GeographyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF39034722266FEE00C9F49C /* GeographyController.m */; };
+		DF69550D222F60BF00BA05FB /* GeographyConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */; };
 		FEC162CD4EA74178E693B02E /* libPods-SF_GaoDeMAP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F42DB759CD0B43CCD05D45CA /* libPods-SF_GaoDeMAP.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,10 @@
 		05DAA9BF1F035370008586AE /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
 		05DAA9C01F035370008586AE /* SpeechSynthesizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizer.m; sourceTree = "<group>"; };
 		B6FD4B384B6BCE8F82480556 /* Pods-SF_GaoDeMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SF_GaoDeMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP.debug.xcconfig"; sourceTree = "<group>"; };
+		DF39034622266FEE00C9F49C /* GeographyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeographyController.h; sourceTree = "<group>"; };
+		DF39034722266FEE00C9F49C /* GeographyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeographyController.m; sourceTree = "<group>"; };
+		DF69550B222F60BF00BA05FB /* GeographyConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeographyConfigModel.h; sourceTree = "<group>"; };
+		DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeographyConfigModel.m; sourceTree = "<group>"; };
 		F42DB759CD0B43CCD05D45CA /* libPods-SF_GaoDeMAP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SF_GaoDeMAP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD310DCB095C1F5FC8895FB8 /* Pods-SF_GaoDeMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SF_GaoDeMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +115,8 @@
 				056E30481F67DCCD00CFEF27 /* SearchViewController.m */,
 				056452B61EEAAE0B00CCD07E /* TrackViewController.h */,
 				056452B71EEAAE0B00CCD07E /* TrackViewController.m */,
+				DF39034622266FEE00C9F49C /* GeographyController.h */,
+				DF39034722266FEE00C9F49C /* GeographyController.m */,
 			);
 			name = SubVC;
 			sourceTree = "<group>";
@@ -165,6 +173,8 @@
 			children = (
 				057D05141EE68F660042A0A6 /* MapManager.h */,
 				057D05151EE68F660042A0A6 /* MapManager.m */,
+				DF69550B222F60BF00BA05FB /* GeographyConfigModel.h */,
+				DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -207,7 +217,6 @@
 				057D04F51EE68DC30042A0A6 /* Sources */,
 				057D04F61EE68DC30042A0A6 /* Frameworks */,
 				057D04F71EE68DC30042A0A6 /* Resources */,
-				09EA8969C0F1356334A50863 /* [CP] Embed Pods Frameworks */,
 				3985A41C6AF871E128FFB75E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -230,8 +239,13 @@
 				TargetAttributes = {
 					057D04F81EE68DC30042A0A6 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 69MP2TR26C;
+						DevelopmentTeam = SH2TS7RBHN;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -278,28 +292,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SF_GaoDeMAP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		09EA8969C0F1356334A50863 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3985A41C6AF871E128FFB75E /* [CP] Copy Pods Resources */ = {
@@ -308,9 +310,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-resources.sh",
+				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
+				"${PODS_ROOT}/AMapNavi/AMapNaviKit.framework/AMapNavi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMapNavi.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -326,6 +333,7 @@
 			files = (
 				056452B81EEAAE0B00CCD07E /* TrackViewController.m in Sources */,
 				057D05161EE68F660042A0A6 /* MapManager.m in Sources */,
+				DF69550D222F60BF00BA05FB /* GeographyConfigModel.m in Sources */,
 				056E30491F67DCCD00CFEF27 /* SearchViewController.m in Sources */,
 				057D05041EE68DC30042A0A6 /* ViewController.m in Sources */,
 				056E30431F67B23F00CFEF27 /* MapViewController.m in Sources */,
@@ -334,6 +342,7 @@
 				057D05011EE68DC30042A0A6 /* AppDelegate.m in Sources */,
 				05DAA9C11F035370008586AE /* SpeechSynthesizer.m in Sources */,
 				057D04FE1EE68DC30042A0A6 /* main.m in Sources */,
+				DF39034822266FEE00C9F49C /* GeographyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,7 +465,7 @@
 			baseConfigurationReference = B6FD4B384B6BCE8F82480556 /* Pods-SF_GaoDeMAP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69MP2TR26C;
+				DEVELOPMENT_TEAM = SH2TS7RBHN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SF_GaoDeMAP/Info.plist;
@@ -471,7 +480,7 @@
 			baseConfigurationReference = FD310DCB095C1F5FC8895FB8 /* Pods-SF_GaoDeMAP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 69MP2TR26C;
+				DEVELOPMENT_TEAM = SH2TS7RBHN;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SF_GaoDeMAP/Info.plist;

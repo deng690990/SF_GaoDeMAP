@@ -12,6 +12,7 @@
 #import "SearchViewController.h"
 #import "MapManager.h"
 #import "TrackViewController.h"
+#import "GeographyController.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -46,11 +47,13 @@
         cell.textLabel.text = @"附近搜索";
     }else if (indexPath.row == 3){
         cell.textLabel.text = @"绘制轨迹";
+    }else if (indexPath.row == 4){
+        cell.textLabel.text = @"地理围栏";
     }
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 5;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -66,6 +69,8 @@
     }else if(indexPath.row == 3){
         TrackViewController *VC = [[TrackViewController alloc]init];
         [self.navigationController pushViewController:VC animated:YES];
+    }else if(indexPath.row == 4){
+        [self.navigationController pushViewController:[GeographyController new] animated:YES];
     }
 }
 @end
