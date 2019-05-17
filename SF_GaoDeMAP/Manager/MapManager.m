@@ -86,7 +86,7 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 {
     if (self.driveManager == nil)
     {
-        self.driveManager = [[AMapNaviDriveManager alloc] init];
+        self.driveManager = [AMapNaviDriveManager sharedInstance];
         [self.driveManager setDelegate:self];
     }
 }

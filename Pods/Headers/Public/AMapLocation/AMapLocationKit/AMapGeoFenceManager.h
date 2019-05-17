@@ -1,1 +1,0 @@
-../../../../AMapLocation/AMapLocationKit.framework/Headers/AMapGeoFenceManager.h

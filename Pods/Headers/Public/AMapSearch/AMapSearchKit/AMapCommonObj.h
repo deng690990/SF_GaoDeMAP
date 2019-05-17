@@ -1,1 +1,0 @@
-../../../../AMapSearch/AMapSearchKit.framework/Headers/AMapCommonObj.h
