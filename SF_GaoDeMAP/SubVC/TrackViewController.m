@@ -23,7 +23,7 @@
     NSArray *array = @[@"39.822136,116.35095",@"39.832136,116.42095",@"39.902136,116.42095",@"39.902136,116.44095"];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [manager drawLineWithArray:array];
-        [manager addAnomationWithArray:array];
+        [manager addAnomationWithArray:@[@"39.822136,116.35095",@"39.902136,116.44095"]];
     });
 }
 

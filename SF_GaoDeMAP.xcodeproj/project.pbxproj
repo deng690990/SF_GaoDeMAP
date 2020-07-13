@@ -7,45 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0543FABD1F03588400220A9C /* MoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0543FABC1F03588400220A9C /* MoreMenuView.m */; };
-		056452AB1EEA771200CCD07E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452AA1EEA771200CCD07E /* icon.png */; };
-		056452AF1EEA8B4E00CCD07E /* 目的地.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452AD1EEA8B4E00CCD07E /* 目的地.png */; };
-		056452B11EEA9B2100CCD07E /* 首牛.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452B01EEA9B2100CCD07E /* 首牛.png */; };
-		056452B31EEAAD2A00CCD07E /* map_history.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452B21EEAAD2A00CCD07E /* map_history.png */; };
-		056452B51EEAADB500CCD07E /* 定位.png in Resources */ = {isa = PBXBuildFile; fileRef = 056452B41EEAADB500CCD07E /* 定位.png */; };
-		056452B81EEAAE0B00CCD07E /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056452B71EEAAE0B00CCD07E /* TrackViewController.m */; };
-		056E30431F67B23F00CFEF27 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30421F67B23F00CFEF27 /* MapViewController.m */; };
-		056E30461F67DC9D00CFEF27 /* PointMakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30451F67DC9D00CFEF27 /* PointMakeController.m */; };
-		056E30491F67DCCD00CFEF27 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E30481F67DCCD00CFEF27 /* SearchViewController.m */; };
 		057D04FE1EE68DC30042A0A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D04FD1EE68DC30042A0A6 /* main.m */; };
 		057D05011EE68DC30042A0A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05001EE68DC30042A0A6 /* AppDelegate.m */; };
 		057D05041EE68DC30042A0A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05031EE68DC30042A0A6 /* ViewController.m */; };
 		057D05071EE68DC30042A0A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D05051EE68DC30042A0A6 /* Main.storyboard */; };
 		057D05091EE68DC30042A0A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 057D05081EE68DC30042A0A6 /* Assets.xcassets */; };
 		057D050C1EE68DC30042A0A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057D050A1EE68DC30042A0A6 /* LaunchScreen.storyboard */; };
-		057D05161EE68F660042A0A6 /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 057D05151EE68F660042A0A6 /* MapManager.m */; };
-		05DAA9C11F035370008586AE /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05DAA9C01F035370008586AE /* SpeechSynthesizer.m */; };
-		DF39034822266FEE00C9F49C /* GeographyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF39034722266FEE00C9F49C /* GeographyController.m */; };
-		DF69550D222F60BF00BA05FB /* GeographyConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */; };
+		DF76B7AD24BC683A0041635E /* running_record.json in Resources */ = {isa = PBXBuildFile; fileRef = DF76B78D24BC683A0041635E /* running_record.json */; };
+		DF76B7AE24BC683A0041635E /* 目的地.png in Resources */ = {isa = PBXBuildFile; fileRef = DF76B78F24BC683A0041635E /* 目的地.png */; };
+		DF76B7AF24BC683A0041635E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DF76B79024BC683A0041635E /* icon.png */; };
+		DF76B7B024BC683A0041635E /* map_history.png in Resources */ = {isa = PBXBuildFile; fileRef = DF76B79124BC683A0041635E /* map_history.png */; };
+		DF76B7B124BC683A0041635E /* 定位.png in Resources */ = {isa = PBXBuildFile; fileRef = DF76B79224BC683A0041635E /* 定位.png */; };
+		DF76B7B224BC683A0041635E /* 首牛.png in Resources */ = {isa = PBXBuildFile; fileRef = DF76B79324BC683A0041635E /* 首牛.png */; };
+		DF76B7B324BC683A0041635E /* MoreMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B79624BC683A0041635E /* MoreMenuView.m */; };
+		DF76B7B424BC683A0041635E /* SpeechSynthesizer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B79924BC683A0041635E /* SpeechSynthesizer.m */; };
+		DF76B7B524BC683A0041635E /* GeographyConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B79D24BC683A0041635E /* GeographyConfigModel.m */; };
+		DF76B7B624BC683A0041635E /* MapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B79E24BC683A0041635E /* MapManager.m */; };
+		DF76B7B724BC683A0041635E /* PointMakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7A124BC683A0041635E /* PointMakeController.m */; };
+		DF76B7B824BC683A0041635E /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7A324BC683A0041635E /* TrackViewController.m */; };
+		DF76B7B924BC683A0041635E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7A424BC683A0041635E /* MapViewController.m */; };
+		DF76B7BA24BC683A0041635E /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7A524BC683A0041635E /* SearchViewController.m */; };
+		DF76B7BB24BC683A0041635E /* Track3DAnimationVc.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7A824BC683A0041635E /* Track3DAnimationVc.m */; };
+		DF76B7BC24BC683A0041635E /* GeographyController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF76B7AB24BC683A0041635E /* GeographyController.m */; };
 		FEC162CD4EA74178E693B02E /* libPods-SF_GaoDeMAP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F42DB759CD0B43CCD05D45CA /* libPods-SF_GaoDeMAP.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0543FABB1F03588400220A9C /* MoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreMenuView.h; sourceTree = "<group>"; };
-		0543FABC1F03588400220A9C /* MoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreMenuView.m; sourceTree = "<group>"; };
-		056452AA1EEA771200CCD07E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		056452AD1EEA8B4E00CCD07E /* 目的地.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "目的地.png"; sourceTree = "<group>"; };
-		056452B01EEA9B2100CCD07E /* 首牛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首牛.png"; sourceTree = "<group>"; };
-		056452B21EEAAD2A00CCD07E /* map_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_history.png; sourceTree = "<group>"; };
-		056452B41EEAADB500CCD07E /* 定位.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位.png"; sourceTree = "<group>"; };
-		056452B61EEAAE0B00CCD07E /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
-		056452B71EEAAE0B00CCD07E /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
-		056E30411F67B23F00CFEF27 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		056E30421F67B23F00CFEF27 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		056E30441F67DC9D00CFEF27 /* PointMakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointMakeController.h; sourceTree = "<group>"; };
-		056E30451F67DC9D00CFEF27 /* PointMakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointMakeController.m; sourceTree = "<group>"; };
-		056E30471F67DCCD00CFEF27 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		056E30481F67DCCD00CFEF27 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		057D04F91EE68DC30042A0A6 /* SF_GaoDeMAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SF_GaoDeMAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057D04FD1EE68DC30042A0A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		057D04FF1EE68DC30042A0A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,15 +43,33 @@
 		057D05081EE68DC30042A0A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		057D050B1EE68DC30042A0A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		057D050D1EE68DC30042A0A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		057D05141EE68F660042A0A6 /* MapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapManager.h; sourceTree = "<group>"; };
-		057D05151EE68F660042A0A6 /* MapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapManager.m; sourceTree = "<group>"; };
-		05DAA9BF1F035370008586AE /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
-		05DAA9C01F035370008586AE /* SpeechSynthesizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizer.m; sourceTree = "<group>"; };
 		B6FD4B384B6BCE8F82480556 /* Pods-SF_GaoDeMAP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SF_GaoDeMAP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP.debug.xcconfig"; sourceTree = "<group>"; };
-		DF39034622266FEE00C9F49C /* GeographyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeographyController.h; sourceTree = "<group>"; };
-		DF39034722266FEE00C9F49C /* GeographyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeographyController.m; sourceTree = "<group>"; };
-		DF69550B222F60BF00BA05FB /* GeographyConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeographyConfigModel.h; sourceTree = "<group>"; };
-		DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeographyConfigModel.m; sourceTree = "<group>"; };
+		DF76B78D24BC683A0041635E /* running_record.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = running_record.json; sourceTree = "<group>"; };
+		DF76B78F24BC683A0041635E /* 目的地.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "目的地.png"; sourceTree = "<group>"; };
+		DF76B79024BC683A0041635E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		DF76B79124BC683A0041635E /* map_history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_history.png; sourceTree = "<group>"; };
+		DF76B79224BC683A0041635E /* 定位.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位.png"; sourceTree = "<group>"; };
+		DF76B79324BC683A0041635E /* 首牛.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首牛.png"; sourceTree = "<group>"; };
+		DF76B79624BC683A0041635E /* MoreMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreMenuView.m; sourceTree = "<group>"; };
+		DF76B79724BC683A0041635E /* MoreMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreMenuView.h; sourceTree = "<group>"; };
+		DF76B79924BC683A0041635E /* SpeechSynthesizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizer.m; sourceTree = "<group>"; };
+		DF76B79A24BC683A0041635E /* SpeechSynthesizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesizer.h; sourceTree = "<group>"; };
+		DF76B79C24BC683A0041635E /* MapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapManager.h; sourceTree = "<group>"; };
+		DF76B79D24BC683A0041635E /* GeographyConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeographyConfigModel.m; sourceTree = "<group>"; };
+		DF76B79E24BC683A0041635E /* MapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapManager.m; sourceTree = "<group>"; };
+		DF76B79F24BC683A0041635E /* GeographyConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeographyConfigModel.h; sourceTree = "<group>"; };
+		DF76B7A124BC683A0041635E /* PointMakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointMakeController.m; sourceTree = "<group>"; };
+		DF76B7A224BC683A0041635E /* Track3DAnimationVc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track3DAnimationVc.h; sourceTree = "<group>"; };
+		DF76B7A324BC683A0041635E /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
+		DF76B7A424BC683A0041635E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		DF76B7A524BC683A0041635E /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		DF76B7A624BC683A0041635E /* GeographyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeographyController.h; sourceTree = "<group>"; };
+		DF76B7A724BC683A0041635E /* PointMakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointMakeController.h; sourceTree = "<group>"; };
+		DF76B7A824BC683A0041635E /* Track3DAnimationVc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track3DAnimationVc.m; sourceTree = "<group>"; };
+		DF76B7A924BC683A0041635E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		DF76B7AA24BC683A0041635E /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
+		DF76B7AB24BC683A0041635E /* GeographyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeographyController.m; sourceTree = "<group>"; };
+		DF76B7AC24BC683A0041635E /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		F42DB759CD0B43CCD05D45CA /* libPods-SF_GaoDeMAP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SF_GaoDeMAP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD310DCB095C1F5FC8895FB8 /* Pods-SF_GaoDeMAP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SF_GaoDeMAP.release.xcconfig"; path = "Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,46 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0543FABA1F03588400220A9C /* MoreMenuView */ = {
-			isa = PBXGroup;
-			children = (
-				0543FABB1F03588400220A9C /* MoreMenuView.h */,
-				0543FABC1F03588400220A9C /* MoreMenuView.m */,
-			);
-			name = MoreMenuView;
-			path = Manager/MoreMenuView;
-			sourceTree = "<group>";
-		};
-		056E30401F67B06400CFEF27 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				056452AA1EEA771200CCD07E /* icon.png */,
-				056452B41EEAADB500CCD07E /* 定位.png */,
-				056452AD1EEA8B4E00CCD07E /* 目的地.png */,
-				056452B01EEA9B2100CCD07E /* 首牛.png */,
-				056452B21EEAAD2A00CCD07E /* map_history.png */,
-			);
-			name = Images;
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		056E304A1F67DCD700CFEF27 /* SubVC */ = {
-			isa = PBXGroup;
-			children = (
-				056E30411F67B23F00CFEF27 /* MapViewController.h */,
-				056E30421F67B23F00CFEF27 /* MapViewController.m */,
-				056E30441F67DC9D00CFEF27 /* PointMakeController.h */,
-				056E30451F67DC9D00CFEF27 /* PointMakeController.m */,
-				056E30471F67DCCD00CFEF27 /* SearchViewController.h */,
-				056E30481F67DCCD00CFEF27 /* SearchViewController.m */,
-				056452B61EEAAE0B00CCD07E /* TrackViewController.h */,
-				056452B71EEAAE0B00CCD07E /* TrackViewController.m */,
-				DF39034622266FEE00C9F49C /* GeographyController.h */,
-				DF39034722266FEE00C9F49C /* GeographyController.m */,
-			);
-			name = SubVC;
-			sourceTree = "<group>";
-		};
 		057D04F01EE68DC30042A0A6 = {
 			isa = PBXGroup;
 			children = (
@@ -142,11 +107,9 @@
 		057D04FB1EE68DC30042A0A6 /* SF_GaoDeMAP */ = {
 			isa = PBXGroup;
 			children = (
-				056E30401F67B06400CFEF27 /* Images */,
-				0543FABA1F03588400220A9C /* MoreMenuView */,
-				05DAA9BE1F035370008586AE /* SpeechSynthesizer */,
-				057D05131EE68F2F0042A0A6 /* Manager */,
-				056E304A1F67DCD700CFEF27 /* SubVC */,
+				DF76B79B24BC683A0041635E /* Manager */,
+				DF76B78C24BC683A0041635E /* Resource */,
+				DF76B7A024BC683A0041635E /* SubVC */,
 				057D04FF1EE68DC30042A0A6 /* AppDelegate.h */,
 				057D05001EE68DC30042A0A6 /* AppDelegate.m */,
 				057D05021EE68DC30042A0A6 /* ViewController.h */,
@@ -168,27 +131,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		057D05131EE68F2F0042A0A6 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				057D05141EE68F660042A0A6 /* MapManager.h */,
-				057D05151EE68F660042A0A6 /* MapManager.m */,
-				DF69550B222F60BF00BA05FB /* GeographyConfigModel.h */,
-				DF69550C222F60BF00BA05FB /* GeographyConfigModel.m */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
-		05DAA9BE1F035370008586AE /* SpeechSynthesizer */ = {
-			isa = PBXGroup;
-			children = (
-				05DAA9BF1F035370008586AE /* SpeechSynthesizer.h */,
-				05DAA9C01F035370008586AE /* SpeechSynthesizer.m */,
-			);
-			name = SpeechSynthesizer;
-			path = Manager/SpeechSynthesizer;
-			sourceTree = "<group>";
-		};
 		37DD374D67F523A68432ADBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +146,85 @@
 				FD310DCB095C1F5FC8895FB8 /* Pods-SF_GaoDeMAP.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DF76B78C24BC683A0041635E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B78D24BC683A0041635E /* running_record.json */,
+				DF76B78E24BC683A0041635E /* Image */,
+				DF76B79424BC683A0041635E /* Tool */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DF76B78E24BC683A0041635E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B78F24BC683A0041635E /* 目的地.png */,
+				DF76B79024BC683A0041635E /* icon.png */,
+				DF76B79124BC683A0041635E /* map_history.png */,
+				DF76B79224BC683A0041635E /* 定位.png */,
+				DF76B79324BC683A0041635E /* 首牛.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		DF76B79424BC683A0041635E /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B79524BC683A0041635E /* MoreMenuView */,
+				DF76B79824BC683A0041635E /* SpeechSynthesizer */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		DF76B79524BC683A0041635E /* MoreMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B79624BC683A0041635E /* MoreMenuView.m */,
+				DF76B79724BC683A0041635E /* MoreMenuView.h */,
+			);
+			path = MoreMenuView;
+			sourceTree = "<group>";
+		};
+		DF76B79824BC683A0041635E /* SpeechSynthesizer */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B79924BC683A0041635E /* SpeechSynthesizer.m */,
+				DF76B79A24BC683A0041635E /* SpeechSynthesizer.h */,
+			);
+			path = SpeechSynthesizer;
+			sourceTree = "<group>";
+		};
+		DF76B79B24BC683A0041635E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B79C24BC683A0041635E /* MapManager.h */,
+				DF76B79D24BC683A0041635E /* GeographyConfigModel.m */,
+				DF76B79E24BC683A0041635E /* MapManager.m */,
+				DF76B79F24BC683A0041635E /* GeographyConfigModel.h */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		DF76B7A024BC683A0041635E /* SubVC */ = {
+			isa = PBXGroup;
+			children = (
+				DF76B7A124BC683A0041635E /* PointMakeController.m */,
+				DF76B7A224BC683A0041635E /* Track3DAnimationVc.h */,
+				DF76B7A324BC683A0041635E /* TrackViewController.m */,
+				DF76B7A424BC683A0041635E /* MapViewController.m */,
+				DF76B7A524BC683A0041635E /* SearchViewController.m */,
+				DF76B7A624BC683A0041635E /* GeographyController.h */,
+				DF76B7A724BC683A0041635E /* PointMakeController.h */,
+				DF76B7A824BC683A0041635E /* Track3DAnimationVc.m */,
+				DF76B7A924BC683A0041635E /* MapViewController.h */,
+				DF76B7AA24BC683A0041635E /* TrackViewController.h */,
+				DF76B7AB24BC683A0041635E /* GeographyController.m */,
+				DF76B7AC24BC683A0041635E /* SearchViewController.h */,
+			);
+			path = SubVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +275,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -272,14 +294,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056452B51EEAADB500CCD07E /* 定位.png in Resources */,
-				056452AF1EEA8B4E00CCD07E /* 目的地.png in Resources */,
-				056452B31EEAAD2A00CCD07E /* map_history.png in Resources */,
-				056452AB1EEA771200CCD07E /* icon.png in Resources */,
+				DF76B7B124BC683A0041635E /* 定位.png in Resources */,
 				057D050C1EE68DC30042A0A6 /* LaunchScreen.storyboard in Resources */,
+				DF76B7B024BC683A0041635E /* map_history.png in Resources */,
 				057D05091EE68DC30042A0A6 /* Assets.xcassets in Resources */,
+				DF76B7AF24BC683A0041635E /* icon.png in Resources */,
+				DF76B7B224BC683A0041635E /* 首牛.png in Resources */,
+				DF76B7AE24BC683A0041635E /* 目的地.png in Resources */,
+				DF76B7AD24BC683A0041635E /* running_record.json in Resources */,
 				057D05071EE68DC30042A0A6 /* Main.storyboard in Resources */,
-				056452B11EEA9B2100CCD07E /* 首牛.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +333,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-resources.sh",
 				"${PODS_ROOT}/AMap3DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/AMapNavi/AMapNaviKit.framework/AMapNavi.bundle",
 			);
@@ -321,7 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SF_GaoDeMAP/Pods-SF_GaoDeMAP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -331,18 +354,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056452B81EEAAE0B00CCD07E /* TrackViewController.m in Sources */,
-				057D05161EE68F660042A0A6 /* MapManager.m in Sources */,
-				DF69550D222F60BF00BA05FB /* GeographyConfigModel.m in Sources */,
-				056E30491F67DCCD00CFEF27 /* SearchViewController.m in Sources */,
+				DF76B7BB24BC683A0041635E /* Track3DAnimationVc.m in Sources */,
+				DF76B7B324BC683A0041635E /* MoreMenuView.m in Sources */,
+				DF76B7B424BC683A0041635E /* SpeechSynthesizer.m in Sources */,
+				DF76B7B624BC683A0041635E /* MapManager.m in Sources */,
+				DF76B7B524BC683A0041635E /* GeographyConfigModel.m in Sources */,
+				DF76B7B724BC683A0041635E /* PointMakeController.m in Sources */,
+				DF76B7BC24BC683A0041635E /* GeographyController.m in Sources */,
+				DF76B7B824BC683A0041635E /* TrackViewController.m in Sources */,
 				057D05041EE68DC30042A0A6 /* ViewController.m in Sources */,
-				056E30431F67B23F00CFEF27 /* MapViewController.m in Sources */,
-				0543FABD1F03588400220A9C /* MoreMenuView.m in Sources */,
-				056E30461F67DC9D00CFEF27 /* PointMakeController.m in Sources */,
+				DF76B7B924BC683A0041635E /* MapViewController.m in Sources */,
+				DF76B7BA24BC683A0041635E /* SearchViewController.m in Sources */,
 				057D05011EE68DC30042A0A6 /* AppDelegate.m in Sources */,
-				05DAA9C11F035370008586AE /* SpeechSynthesizer.m in Sources */,
 				057D04FE1EE68DC30042A0A6 /* main.m in Sources */,
-				DF39034822266FEE00C9F49C /* GeographyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

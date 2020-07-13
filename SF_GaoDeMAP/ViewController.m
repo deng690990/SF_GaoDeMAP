@@ -13,7 +13,7 @@
 #import "MapManager.h"
 #import "TrackViewController.h"
 #import "GeographyController.h"
-
+#import "Track3DAnimationVc.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -49,11 +49,13 @@
         cell.textLabel.text = @"绘制轨迹";
     }else if (indexPath.row == 4){
         cell.textLabel.text = @"地理围栏";
+    }else if (indexPath.row == 5){
+        cell.textLabel.text = @"轨迹回放_卫星3D动画";
     }
     return cell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 6;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -71,6 +73,8 @@
         [self.navigationController pushViewController:VC animated:YES];
     }else if(indexPath.row == 4){
         [self.navigationController pushViewController:[GeographyController new] animated:YES];
+    }else if(indexPath.row == 5){
+        [self.navigationController pushViewController:[Track3DAnimationVc new] animated:YES];
     }
 }
 @end

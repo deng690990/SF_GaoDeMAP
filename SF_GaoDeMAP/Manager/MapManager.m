@@ -291,7 +291,7 @@ updatingLocation:(BOOL)updatingLocation
 {
     //配置MoreMenu状态
     [self.moreMenu setTrackingMode:self.driveView.trackingMode];
-    [self.moreMenu setShowNightType:self.driveView.showStandardNightType];
+    [self.moreMenu setShowNightType:self.driveView.mapViewModeType];
     
     [self.moreMenu setFrame:self.controller.view.bounds];
     [self.controller.view addSubview:self.moreMenu];
@@ -389,7 +389,7 @@ updatingLocation:(BOOL)updatingLocation
         polylineRenderer.lineJoinType = kMALineJoinRound;
         polylineRenderer.lineCapType  = kMALineCapRound;
         //将轨迹设置为自定义的样式
-        [polylineRenderer loadStrokeTextureImage:[UIImage imageNamed:@"map_history"]];
+        polylineRenderer.strokeImage = [UIImage imageNamed:@"map_history"];
         
         return polylineRenderer;
     }
@@ -438,7 +438,7 @@ updatingLocation:(BOOL)updatingLocation
 
 - (void)moreMenuViewNightTypeChangeTo:(BOOL)isShowNightType
 {
-    [self.driveView setShowStandardNightType:isShowNightType];
+    self.driveView.mapViewModeType = isShowNightType;
 }
 
 - (void)moreMenuViewTrackingModeChangeTo:(AMapNaviViewTrackingMode)trackingMode
