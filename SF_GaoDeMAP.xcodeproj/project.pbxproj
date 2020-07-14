@@ -211,18 +211,18 @@
 		DF76B7A024BC683A0041635E /* SubVC */ = {
 			isa = PBXGroup;
 			children = (
-				DF76B7A124BC683A0041635E /* PointMakeController.m */,
-				DF76B7A224BC683A0041635E /* Track3DAnimationVc.h */,
-				DF76B7A324BC683A0041635E /* TrackViewController.m */,
-				DF76B7A424BC683A0041635E /* MapViewController.m */,
-				DF76B7A524BC683A0041635E /* SearchViewController.m */,
 				DF76B7A624BC683A0041635E /* GeographyController.h */,
-				DF76B7A724BC683A0041635E /* PointMakeController.h */,
-				DF76B7A824BC683A0041635E /* Track3DAnimationVc.m */,
-				DF76B7A924BC683A0041635E /* MapViewController.h */,
-				DF76B7AA24BC683A0041635E /* TrackViewController.h */,
 				DF76B7AB24BC683A0041635E /* GeographyController.m */,
+				DF76B7A924BC683A0041635E /* MapViewController.h */,
+				DF76B7A424BC683A0041635E /* MapViewController.m */,
+				DF76B7A724BC683A0041635E /* PointMakeController.h */,
+				DF76B7A124BC683A0041635E /* PointMakeController.m */,
 				DF76B7AC24BC683A0041635E /* SearchViewController.h */,
+				DF76B7A524BC683A0041635E /* SearchViewController.m */,
+				DF76B7A224BC683A0041635E /* Track3DAnimationVc.h */,
+				DF76B7A824BC683A0041635E /* Track3DAnimationVc.m */,
+				DF76B7AA24BC683A0041635E /* TrackViewController.h */,
+				DF76B7A324BC683A0041635E /* TrackViewController.m */,
 			);
 			path = SubVC;
 			sourceTree = "<group>";
@@ -493,6 +493,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SF_GaoDeMAP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ShouNew.SF-GaoDeMAP";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,6 +509,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = SF_GaoDeMAP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ShouNew.SF-GaoDeMAP";
 				PRODUCT_NAME = "$(TARGET_NAME)";

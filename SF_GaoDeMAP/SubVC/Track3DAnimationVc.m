@@ -67,7 +67,7 @@
     self.dpLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
     self.dpLink.paused = NO;
     ///最小刷新时间 (帧)
-    self.dpLink.frameInterval = 1;
+    self.dpLink.frameInterval = 2;
     [self.dpLink addToRunLoop:NSRunLoop.currentRunLoop forMode:NSDefaultRunLoopMode];
     
 }
@@ -104,7 +104,9 @@
         }
         self.myLocation.coordinate = CLLocationCoordinate2DMake(lastLocation.coordinate.latitude, lastLocation.coordinate.longitude);
         [self.mapView addOverlay:self.polyline];
-        [self.mapView setCenterCoordinate:((CLLocation *)self.traceCoordinates[self.uptateIndex+1]).coordinate animated:NO];
+        //这个地方是实时将当前位置设为中心点，假如有头像，会闪变
+//            [self.mapView setCenterCoordinate:((CLLocation *)self.traceCoordinates[self.uptateIndex+1]).coordinate animated:NO];
+        
         [self.mapView setRotationDegree:self.yvAngle animated:NO duration:1];
         [self.mapView setCameraDegree:self.yvAngle animated:NO duration:1];
         self.yvAngle += 1;
@@ -128,11 +130,10 @@
         if (annotationView == nil) {
             annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pointReuseIndentifier];
         }
-        annotationView.image = [UIImage imageNamed:@"userHeadimage"];
-        annotationView.imageView.layer.cornerRadius = 20;
+        annotationView.image = [UIImage imageNamed:@"首牛"];
+        annotationView.imageView.layer.cornerRadius = 28;
         annotationView.imageView.layer.masksToBounds = YES;
-        annotationView.imageView.backgroundColor = UIColor.whiteColor;
-        annotationView.imageView.layer.borderColor = UIColor.whiteColor.CGColor;
+        annotationView.imageView.layer.borderColor = UIColor.lightGrayColor.CGColor;
         annotationView.imageView.layer.borderWidth = 2;
         annotationView.canShowCallout = NO;
         return annotationView;
