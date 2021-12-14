@@ -38,6 +38,8 @@
     [self start];
 }
 -(void)setupMapView{
+    [MAMapView updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
+    [MAMapView updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
     _mapView = [[MAMapView alloc] initWithFrame:self.view.bounds];
     _mapView.delegate = self;
     _mapView.showsCompass = NO;

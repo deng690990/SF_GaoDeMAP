@@ -10,7 +10,7 @@
 //基础定位类
 #import <AMapFoundationKit/AMapFoundationKit.h>
 //高德地图基础类
-#import <MAMapKit/MAMapKit.h>
+#import <AMapNaviKit/MAMapKit.h>
 //搜索基础类
 #import <AMapSearchKit/AMapSearchKit.h>
 //高德导航类
@@ -23,7 +23,6 @@
 
 typedef void(^MapBlock)();
 @interface MapManager : NSObject
-@property (nonatomic,weak)UIViewController *controller;
 //地图对象
 @property(nonatomic,strong)MAMapView *mapView;
 //一个search对象，用于地理位置逆编码
@@ -58,6 +57,7 @@ typedef void(^MapBlock)();
 +(instancetype)sharedManager;
 //初始化地图
 -(void)initMapView;
+-(void)removeMapView;
 //初始化搜索对象
 -(void)initSearch;
 //带回调的地图初始化方法

@@ -1,43 +1,38 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
-  - AMap3DMap (6.8.1):
-    - AMapFoundation (~> 1.5)
-  - AMapFoundation (1.5.6)
-  - AMapLocation (2.6.2):
-    - AMapFoundation (~> 1.4)
-  - AMapNavi (6.7.0):
-    - AMap3DMap (~> 6.7)
-    - AMapFoundation (~> 1.5)
-  - AMapSearch (6.6.0):
-    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.6.9)
+  - AMapLocation (2.8.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapNavi (8.1.0):
+    - AMapFoundation (~> 1.6.9)
+  - AMapSearch (8.1.0):
+    - AMapFoundation (~> 1.6.9)
   - JZLocationConverter (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - AMap3DMap
   - AMapLocation
   - AMapNavi
   - AMapSearch
   - JZLocationConverter
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AFNetworking
-    - AMap3DMap
     - AMapFoundation
     - AMapLocation
     - AMapNavi
@@ -45,14 +40,13 @@ SPEC REPOS:
     - JZLocationConverter
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AMap3DMap: 9fa4ec6ab230bfbd3f0c0834f757fbd7038efe53
-  AMapFoundation: 20fce2a12cd152e1092afdd04379cdac21932185
-  AMapLocation: 89a7e4eb6040d32ba73c77a4966ecc66e46aa7c3
-  AMapNavi: 89e30fee35c01a00e45e846fa272f60724d06d0c
-  AMapSearch: def5983c8ca1a6d7430970046dc814f6e337621d
+  AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
+  AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
+  AMapNavi: 257ceddc7f4e26012e284e7b6c08f72e95fd1759
+  AMapSearch: 5c1cc07429f04b9cc76438fcb2411c66fdbbb178
   JZLocationConverter: 3d816bee6484aed9c155a6045a02ce444833e2f0
 
-PODFILE CHECKSUM: f12f436e7997bc8389547332c4c1b7e074c01727
+PODFILE CHECKSUM: b882d4a11bad38b8a588428808b46b3c2d07678a
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.10.0

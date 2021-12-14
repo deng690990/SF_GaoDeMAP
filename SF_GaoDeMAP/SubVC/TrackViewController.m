@@ -17,7 +17,6 @@
     [super viewDidLoad];
     self.title = @"轨迹绘制";
     MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
     [manager initMapView];
     [manager.mapView setZoomLevel:13.1 animated:YES];
     NSArray *array = @[@"39.822136,116.35095",@"39.832136,116.42095",@"39.902136,116.42095",@"39.902136,116.44095"];

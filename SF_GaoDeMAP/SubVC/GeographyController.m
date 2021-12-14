@@ -24,7 +24,6 @@
 }
 -(void)mapMethod{
     _manager = [MapManager sharedManager];
-    _manager.controller = self;
     //圆形
     GeographyConfigModel *configModel = [GeographyConfigModel new];
     configModel.geoType = GeoType_circle;

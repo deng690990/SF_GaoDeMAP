@@ -14,7 +14,11 @@
 @end
 
 @implementation MapViewController
-
+-(void)dealloc{
+    NSLog(@"%s",__FUNCTION__);
+    // 防止内存泄漏
+    [[MapManager sharedManager] removeMapView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,9 +28,7 @@
 }
 //显示自己的定位信息
 -(void)locationOnlySelf{
-    MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
-    [manager initMapView];
+    [[MapManager sharedManager] initMapView];
 }
 
 @end

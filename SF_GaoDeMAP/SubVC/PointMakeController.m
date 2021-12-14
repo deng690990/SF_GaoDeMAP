@@ -13,7 +13,11 @@
 @end
 
 @implementation PointMakeController
-
+-(void)dealloc{
+    NSLog(@"%s",__FUNCTION__);
+    // 防止内存泄漏
+    [[MapManager sharedManager] removeMapView];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //不管做什么地图操作都先定位自己的位置，不然后面会有一些bug（当然只是这个demo而言）
@@ -23,9 +27,7 @@
 }
 //显示自己的定位信息
 -(void)locationOnlySelf{
-    MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
-    [manager initMapView];
+    [[MapManager sharedManager] initMapView];
 }
 //给一个坐标，在地图上显示大头针
 -(void)addAnonation{

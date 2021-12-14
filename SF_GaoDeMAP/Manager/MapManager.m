@@ -13,6 +13,10 @@
 
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
+//宏定义根导航控制器，view所在控制器
+#define RootNav [self getRootNav]
+#define CurrentVc [self getCurrentViewController]
+
 @interface MapManager()<MAMapViewDelegate,AMapSearchDelegate,AMapNaviWalkManagerDelegate,AMapNaviWalkViewDelegate,AMapNaviDriveViewDelegate,AMapNaviDriveManagerDelegate,MoreMenuViewDelegate,AMapGeoFenceManagerDelegate>
 @property (nonatomic,strong)NSMutableArray *searchResultArr;
 @property (nonatomic, strong) MoreMenuView *moreMenu;//导航页面菜单选项
@@ -34,10 +38,12 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 #pragma mark --初始化地图对象
 -(void)initMapView{
     [self initSearch];
+    [MAMapView updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
+    [MAMapView updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
     ///初始化地图
-    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_W      , SCREEN_H-64)];
+    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_W, SCREEN_H-64)];
     ///把地图添加至view
-    [self.controller.view addSubview:_mapView];
+    [CurrentVc.view addSubview:_mapView];
     ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
@@ -51,13 +57,18 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
     //把中心点设成自己的坐标
     _mapView.centerCoordinate = self.currentLocation.coordinate;
 }
+#pragma mark - 移除mapview并置空
+-(void)removeMapView{
+    [_mapView removeFromSuperview];
+    _mapView = nil;
+}
 #pragma mark --带block的地图初始化方法
 -(void)initMapViewWithBlock:(MapBlock)block{
     [self initSearch];
     ///初始化地图
-    _mapView = [[MAMapView alloc] initWithFrame:self.controller.view.bounds];
+    _mapView = [[MAMapView alloc] initWithFrame:CurrentVc.view.bounds];
     ///把地图添加至view
-    [self.controller.view addSubview:_mapView];
+    [CurrentVc.view addSubview:_mapView];
     ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
@@ -77,7 +88,7 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 {
     if (self.walkManager == nil)
     {
-        self.walkManager = [[AMapNaviWalkManager alloc] init];
+        self.walkManager = [AMapNaviWalkManager sharedInstance];
         [self.walkManager setDelegate:self];
     }
 }
@@ -144,24 +155,26 @@ static CLLocationCoordinate2D distinateCoor;//目的地坐标
 }
 #pragma mark --导航点击事件
 -(void)navBtnClick{
-    self.controller.navigationController.navigationBar.hidden = YES;
+    RootNav.navigationBar.hidden = YES;
     NSLog(@"%lf---%lf",distinateCoor.latitude,distinateCoor.longitude);
     //初始化起点和终点
     self.startPoint = [AMapNaviPoint locationWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
     self.endPoint   = [AMapNaviPoint locationWithLatitude:distinateCoor.latitude longitude:distinateCoor.longitude];
     [self initDriveManager];
     self.driveView = [[AMapNaviDriveView alloc] init];
-    self.driveView.frame = self.controller.view.frame;
+    self.driveView.frame = CurrentVc.view.frame;
     self.driveView.delegate = self;
-    [self.controller.view addSubview:self.driveView];
+    [CurrentVc.view addSubview:self.driveView];
     [self.driveManager addDataRepresentative:self.driveView];
     [self.driveManager calculateDriveRouteWithStartPoints:@[self.startPoint] endPoints:@[self.endPoint]wayPoints:nil drivingStrategy:AMapNaviDrivingStrategySingleDefault];
 }
 
 #pragma mark serach初始化
 -(void)initSearch{
+    [AMapSearchAPI updatePrivacyShow:AMapPrivacyShowStatusDidShow privacyInfo:AMapPrivacyInfoStatusDidContain];
+    [AMapSearchAPI updatePrivacyAgree:AMapPrivacyAgreeStatusDidAgree];
     _search =[[AMapSearchAPI alloc] init];
-    _search.delegate=self;
+    _search.delegate = self;
 }
 #pragma mark --初始化导航菜单键
 - (void)initMoreMenu
@@ -257,7 +270,7 @@ updatingLocation:(BOOL)updatingLocation
 }
 #pragma mark --关闭导航的方法
 -(void)walkViewCloseButtonClicked:(AMapNaviWalkView *)walkView{
-    self.controller.navigationController.navigationBar.hidden = NO;
+    RootNav.navigationBar.hidden = NO;
     [self.walkManager stopNavi];
     [walkView removeFromSuperview];
     //停止语音
@@ -271,7 +284,7 @@ updatingLocation:(BOOL)updatingLocation
     [driveManager startGPSNavi];
 }
 -(void)driveViewCloseButtonClicked:(AMapNaviDriveView *)driveView{
-    self.controller.navigationController.navigationBar.hidden = NO;
+    RootNav.navigationBar.hidden = NO;
     [self.driveManager stopNavi];
     [driveView removeFromSuperview];
     //停止语音
@@ -293,8 +306,8 @@ updatingLocation:(BOOL)updatingLocation
     [self.moreMenu setTrackingMode:self.driveView.trackingMode];
     [self.moreMenu setShowNightType:self.driveView.mapViewModeType];
     
-    [self.moreMenu setFrame:self.controller.view.bounds];
-    [self.controller.view addSubview:self.moreMenu];
+    [self.moreMenu setFrame:CurrentVc.view.bounds];
+    [CurrentVc.view addSubview:self.moreMenu];
 }
 - (void)driveViewTrunIndicatorViewTapped:(AMapNaviDriveView *)driveView
 {
@@ -449,9 +462,9 @@ updatingLocation:(BOOL)updatingLocation
 -(void)initMapViewWithGeofraphyBlock:(MapBlock)block{
     [self initSearch];
     ///初始化地图
-    _mapView = [[MAMapView alloc] initWithFrame:self.controller.view.bounds];
+    _mapView = [[MAMapView alloc] initWithFrame:CurrentVc.view.bounds];
     ///把地图添加至view
-    [self.controller.view addSubview:_mapView];
+    [CurrentVc.view addSubview:_mapView];
     ///如果您需要进入地图就显示定位小蓝点，则需要下面两行代码
     _mapView.showsUserLocation = YES;
     _mapView.userTrackingMode = MAUserTrackingModeFollow;
@@ -522,5 +535,48 @@ updatingLocation:(BOOL)updatingLocation
     }else{
         NSLog(@"用户超出了围栏范围 %@",[region description]);
     }
+}
+#pragma mark - 获取vc
+- (UIViewController *)recursiveFindCurrentShowViewControllerFromViewController:(UIViewController *)fromVC
+
+{
+
+    if ([fromVC isKindOfClass:[UINavigationController class]]) {
+
+        return [self recursiveFindCurrentShowViewControllerFromViewController:[((UINavigationController *)fromVC) visibleViewController]];
+
+    } else if ([fromVC isKindOfClass:[UITabBarController class]]) {
+
+        return [self recursiveFindCurrentShowViewControllerFromViewController:[((UITabBarController *)fromVC) selectedViewController]];
+
+    } else {
+
+        if (fromVC.presentedViewController) {
+
+            return [self recursiveFindCurrentShowViewControllerFromViewController:fromVC.presentedViewController];
+
+        } else {
+
+            return fromVC;
+
+        }
+    }
+}
+/**
+ 获取当前控制器
+ */
+- (UIViewController *)getCurrentViewController{
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *currentShowVC = [self recursiveFindCurrentShowViewControllerFromViewController:rootVC];
+    return currentShowVC;
+}
+
+/**
+ 获取根导航控制器
+ */
+- (UINavigationController *)getRootNav{
+    UINavigationController *nav = [self getCurrentViewController].navigationController;
+    return nav;
 }
 @end
