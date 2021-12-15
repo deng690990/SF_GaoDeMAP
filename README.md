@@ -80,14 +80,8 @@ pod 'JZLocationConverter'#gps纠偏
 - (void)viewDidLoad {
     [super viewDidLoad];
     //不管进行什么地图操作都要先定位自己位置
-    [self locationOnlySelf];
+    [[MapManager sharedManager] initMapView];
     
-}
-//显示自己的定位信息
--(void)locationOnlySelf{
-    MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
-    [manager initMapView];
 }
 ```
 
@@ -96,10 +90,11 @@ pod 'JZLocationConverter'#gps纠偏
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	//不管进行什么地图操作都要先定位自己位置
-	[self locationOnlySelf];
+	// 先初始化地图
+	[[MapManager sharedManager] initMapView];
+	// 添加点标记
 	CLLocationCoordinate2D coor;
-	coor.latitude = 30.566666;//
+	coor.latitude = 30.566666;
 	coor.longitude = 104.054536;
 	[[MapManager sharedManager] addAnomationWithCoor:coor];
 }
@@ -109,8 +104,7 @@ pod 'JZLocationConverter'#gps纠偏
 ```objective-c
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //不管进行什么地图操作都要先定位自己位置
-    [self locationOnlySelf];
+    [[MapManager sharedManager] initMapView];
     [self searchAround];
 }
 //附近搜索
@@ -127,7 +121,6 @@ pod 'JZLocationConverter'#gps纠偏
 - (void)viewDidLoad {
     [super viewDidLoad];
     MapManager *manager = [MapManager sharedManager];
-    manager.controller = self;
     [manager initMapView];
     [manager.mapView setZoomLevel:13.1 animated:YES];
     //存放历史轨迹点坐标的数组
